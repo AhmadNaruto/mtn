@@ -55,20 +55,24 @@ S_LIBS= -static-libgcc -static \
 	$(LIBSDIR)/libgd/Bin/libgd.a \
     -lpthread -lbz2 -lfontconfig -lfreetype -lbrotlidec -lbrotlicommon -lexpat -ljpeg -lpng16 -lwebp -lz -lzimg -lm -lstdc++
 
-mtn: mtn.c outdir
-	$(CC) -o $(OUT)/mtn mtn.c $(INCPATH) $(CFLAGS) -O3 $(LIBS)
+# Source files
+SRCS = mtn.c mtn_context.c mtn_thumbnail.c mtn_error.c
+OBJS = $(SRCS:.c=.o)
+
+mtn: $(SRCS) outdir
+	$(CC) -o $(OUT)/mtn $(SRCS) $(INCPATH) $(CFLAGS) -O3 $(LIBS)
 
 outdir:
 	mkdir -p $(OUT)
 
-static: mtn.c outdir
-	$(CC) -o $(OUT)/mtn mtn.c $(S_INCPATH) $(CFLAGS) $(S_LIBS) -DMTN_STATIC
+static: $(SRCS) outdir
+	$(CC) -o $(OUT)/mtn $(SRCS) $(S_INCPATH) $(CFLAGS) $(S_LIBS) -DMTN_STATIC
 
-debug: mtn.c outdir
-	$(CC) -o $(OUT)/mtn mtn.c $(INCPATH) $(CFLAGS) -W -Wall -g -DDEBUG $(LIBS)
+debug: $(SRCS) outdir
+	$(CC) -o $(OUT)/mtn $(SRCS) $(INCPATH) $(CFLAGS) -W -Wall -g -DDEBUG $(LIBS)
 
 clean:
-	rm -f $(OUT)/mtn
+	rm -f $(OUT)/mtn *.o
 
 distclean:
 	rm -rf $(OUT)
@@ -86,14 +90,14 @@ static_test: rebuild_static static test_bin
 install:
 	mkdir -p $(DESTDIR)$(PREFIX)/bin/
 	install -m 755 $(OUT)/mtn $(DESTDIR)$(PREFIX)/bin/
-	mkdir -p $(DESTDIR)$(PREFIX)/share/doc/mtn
-	cp -Rp ../doc/* $(DESTDIR)$(PREFIX)/share/doc/mtn
-	cp -p ../LICENSE $(DESTDIR)$(PREFIX)/share/doc/mtn
-	mkdir -p $(DESTDIR)$(PREFIX)/share/man/man1
-	cp -p ../man/mtn.1 $(DESTDIR)$(PREFIX)/share/man/man1/
+	# mkdir -p $(DESTDIR)$(PREFIX)/share/doc/mtn
+	# cp -Rp ../doc/* $(DESTDIR)$(PREFIX)/share/doc/mtn
+	# cp -p ../LICENSE $(DESTDIR)$(PREFIX)/share/doc/mtn
+	# mkdir -p $(DESTDIR)$(PREFIX)/share/man/man1
+	# cp -p ../man/mtn.1 $(DESTDIR)$(PREFIX)/share/man/man1/
 
 uninstall:
-	rm -f  $(DESTDIR)$(PREFIX)/share/man/man1/mtn.1
+	# rm -f  $(DESTDIR)$(PREFIX)/share/man/man1/mtn.1
 	rm -f  $(DESTDIR)$(PREFIX)/bin/mtn
-	rm -rf $(DESTDIR)$(PREFIX)/share/doc/mtn
+	# rm -rf $(DESTDIR)$(PREFIX)/share/doc/mtn
 
