@@ -1,24 +1,30 @@
 # Contributing
 
-Thank you for your interest in MTN. Here are a couple of ways you can do to make it better.  
+Thank you for your interest in MTN. Here are a couple of ways you can do to make it better.
+
+**Original Project:** https://gitlab.com/movie_thumbnailer/mtn (by tuit & wahibre)  
+**Fork Repository:** https://github.com/AhmadNaruto/mtn
 
 
 ## Comment issues
 
-List [opened issues](https://github.com/AhmadNaruto/mtn/issues/?scope=all&state=opened) and  
+List [opened issues](https://github.com/AhmadNaruto/mtn/issues/?scope=all&state=opened) (Fork) or  
+[opened issues](https://gitlab.com/movie_thumbnailer/mtn/issues) (Original) and
 
- - share your experience  
- - add related links  
- - confirm others answers using "thumbs up"  
- - add helpful information related to the issue  
+ - share your experience
+ - add related links
+ - confirm others answers using "thumbs up"
+ - add helpful information related to the issue
 
 ## Improve doc
 
-Read the [README](https://github.com/AhmadNaruto/mtn/-/blob/devel/README.md) and [Wiki](https://github.com/AhmadNaruto/mtn/wikis/home) and check for errors, typos, etc. If you are not familiar with git and merge requests, you can send your correction via [email](mailto:movie_thumbnailer@gmx.com).
+Read the [README](https://github.com/AhmadNaruto/mtn/-/blob/devel/README.md) (Fork) and [Wiki](https://github.com/AhmadNaruto/mtn/wikis/home) (Fork) or  
+[Original README](https://gitlab.com/movie_thumbnailer/mtn/-/blob/devel/README.md) and [Original Wiki](https://gitlab.com/movie_thumbnailer/mtn/wikis/home) and check for errors, typos, etc. If you are not familiar with git and merge requests, you can send your correction via [email](mailto:movie_thumbnailer@gmx.com).
 
 ## Report bug
 
-Download latest version and test it. If you find a bug, report an [issue](https://github.com/AhmadNaruto/mtn/issues). Fill in all important information to reproduce the bug. Use **-v** switch to print out debug information. Attach whole output as a file output.txt.  
+Download latest version and test it. If you find a bug, report an [issue](https://github.com/AhmadNaruto/mtn/issues) (Fork) or  
+[issue](https://gitlab.com/movie_thumbnailer/mtn/issues) (Original). Fill in all important information to reproduce the bug. Use **-v** switch to print out debug information. Attach whole output as a file output.txt.
 
 <u>*Example:*</u>  
 

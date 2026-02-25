@@ -6,7 +6,8 @@
 
 - **Primary Language:** C
 - **License:** GNU GPL v2
-- **Repository:** https://github.com/AhmadNaruto/mtn
+- **Original Repository:** https://gitlab.com/movie_thumbnailer/mtn (by tuit & wahibre)
+- **Fork Repository:** https://github.com/AhmadNaruto/mtn
 - **Current Version:** 3.5.0 (as of Feb 2024)
 
 ### Core Functionality
@@ -412,8 +413,14 @@ See `CONTRIBUTING.md` for guidelines:
 
 - [FFmpeg Documentation](https://ffmpeg.org/documentation.html)
 - [libgd Documentation](https://libgd.github.io/)
-- [Project Wiki](https://github.com/AhmadNaruto/mtn/wikis/home)
-- [Issue Tracker](https://github.com/AhmadNaruto/mtn/issues)
+- **Original Project:**
+  - [GitLab Repository](https://gitlab.com/movie_thumbnailer/mtn)
+  - [Project Wiki](https://gitlab.com/movie_thumbnailer/mtn/wikis/home)
+  - [Issue Tracker](https://gitlab.com/movie_thumbnailer/mtn/issues)
+- **Fork (GitHub):**
+  - [GitHub Repository](https://github.com/AhmadNaruto/mtn)
+  - [Wiki](https://github.com/AhmadNaruto/mtn/wikis/home)
+  - [Issues](https://github.com/AhmadNaruto/mtn/issues)
 
 ---
 

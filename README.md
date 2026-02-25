@@ -2,10 +2,16 @@ Description
 ===========
 
 Movie Thumbnailer (mtn) saves thumbnails (screenshots) of video files to image files (jpg, png, webp, avif).
-It uses FFmpeg's libavcodec as its engine, so it supports all popular codecs, e.g. h.265/hevc, h.264, mpeg1, mpeg2, mp4, vc1, wmv, xvid, divx...     
+It uses FFmpeg's libavcodec as its engine, so it supports all popular codecs, e.g. h.265/hevc, h.264, mpeg1, mpeg2, mp4, vc1, wmv, xvid, divx...
+
+**Original Project:** https://gitlab.com/movie_thumbnailer/mtn  
+**Original Author:** tuit (tuitfun) & wahibre
+
 mtn was originaly developed by tuit (tuitfun); though most of its magic is actually done
 by FFmpeg libraries. For documents, please see in the doc directory and wiki at 
-https://github.com/AhmadNaruto/mtn/wikis/home .
+https://gitlab.com/movie_thumbnailer/mtn/wikis/home .
+
+**Fork:** https://github.com/AhmadNaruto/mtn
 
 
 Dependency
@@ -17,8 +23,14 @@ Dependency
 Getting source
 ==============
 
+**Fork (GitHub):**
 ```sh
 git clone https://github.com/AhmadNaruto/mtn.git
+```
+
+**Original (GitLab):**
+```sh
+git clone https://gitlab.com/movie_thumbnailer/mtn.git
 ```
 
 Installation
@@ -37,7 +49,8 @@ make install
 From community repository
 -----------
 
-See [wiki](https://github.com/AhmadNaruto/mtn/wikis/home#install-from-community-repository) page
+See [wiki](https://github.com/AhmadNaruto/mtn/wikis/home#install-from-community-repository) (Fork)  
+See [original wiki](https://gitlab.com/movie_thumbnailer/mtn/wikis/home#install-from-community-repository) (Original)
 
 Getting build dependencies
 ==========================
@@ -102,14 +115,14 @@ pacman -S mingw-w64-x86_64-make mingw-w64-x86_64-gcc mingw-w64-x86_64-ffmpeg min
 mingw32-make.exe
 
 ```
-(more information in [wiki](https://github.com/AhmadNaruto/mtn/-/wikis/Building-on-Windows))
+(more information in [wiki](https://github.com/AhmadNaruto/mtn/-/wikis/Building-on-Windows) - Fork)
 
 macOS [(brew)](https://brew.sh/)
 =====
 
 
 If you don't want to contribute please refer to the installation guide
-[here](https://github.com/AhmadNaruto/mtn/wikis/home#macos)
+[here](https://github.com/AhmadNaruto/mtn/wikis/home#macos) (Fork)
 instead.
 
 ```sh
