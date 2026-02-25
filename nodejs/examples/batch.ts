@@ -5,7 +5,7 @@
  * thumbnails for each one.
  */
 
-import { MtnThumbnailer } from './index';
+import { MtnThumbnailer } from '../src/index';
 import { readdirSync, statSync } from 'fs';
 import { join } from 'path';
 

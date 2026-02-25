@@ -5,7 +5,7 @@
  * for a video file using default settings.
  */
 
-import { MtnThumbnailer } from './index';
+import { MtnThumbnailer } from '../src/index';
 
 async function main() {
   // Create thumbnailer instance

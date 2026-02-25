@@ -5,7 +5,7 @@
  * for customized thumbnail generation.
  */
 
-import { MtnThumbnailer, MtnOptions } from './index';
+import { MtnThumbnailer, MtnOptions } from '../src/index';
 
 async function main() {
   const mtn = new MtnThumbnailer();

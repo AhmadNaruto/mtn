@@ -185,7 +185,9 @@ export class MtnThumbnailer {
       const mtn = spawn(this.mtnPath, ['-v']);
       
       mtn.on('close', (code) => {
-        resolve(code === 0 || code === 1);
+        // Exit code 255 means mtn ran but no input file (expected)
+        // Exit code 0 or 1 means success or warning
+        resolve(code === 0 || code === 1 || code === 255);
       });
 
       mtn.on('error', () => {
@@ -202,7 +204,7 @@ export class MtnThumbnailer {
       const mtn = spawn(this.mtnPath, ['-v']);
       let version = '';
 
-      mtn.stdout.on('data', (data: Buffer) => {
+      mtn.stderr.on('data', (data: Buffer) => {
         version += data.toString();
       });
 

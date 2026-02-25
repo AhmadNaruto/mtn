@@ -6,7 +6,7 @@
  */
 
 import express from 'express';
-import { MtnThumbnailer } from '../src/index';
+import { MtnThumbnailer } from '../dist/index';
 import { join } from 'path';
 
 const app = express();
