@@ -1,3 +1,19 @@
+version 3.6.0 	2026/02/25
+- Repository migration: GitLab to GitHub (https://github.com/AhmadNaruto/mtn)
+- Node.js wrapper package published to npm (mtn-thumbnailer v1.0.1)
+- Code refactoring for better modularity and thread safety
+  - Extracted ThumbnailContext struct for resource management
+  - Added MtnContext for global state management
+  - Added error handling utilities with standardized error codes
+- Fixed static buffer issues (thread-unsafe code)
+  - format_color() now requires caller-provided buffer
+  - format_size() now requires caller-provided buffer
+  - get_stream_info() now requires caller-provided buffer
+- Replaced unsafe sprintf/strcat with snprintf/strncat
+- Added TypeScript support with full type definitions
+- Improved documentation with proper credits to original authors
+- Updated all repository URLs from gitlab.com to github.com
+
 version 3.5.0 	2024/02/21
 - add filtering and tonemaping (--filters, --filter-color-primaries, --tonemap)
 - add -x switch to change output filename

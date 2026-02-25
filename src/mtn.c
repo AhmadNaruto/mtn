@@ -323,7 +323,7 @@ int gb__tonemap = 0;
 
 /* more global variables */
 char *gb_argv0 = NULL;
-char *gb_version = "3.5.0";
+char *gb_version = "3.6.0";
 time_t gb_st_start = 0; // start time of program
 char **movie_ext = NULL;
 
