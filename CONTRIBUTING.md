@@ -5,7 +5,7 @@ Thank you for your interest in MTN. Here are a couple of ways you can do to make
 
 ## Comment issues
 
-List [opened issues](https://gitlab.com/movie_thumbnailer/mtn/issues/?scope=all&state=opened) and  
+List [opened issues](https://github.com/AhmadNaruto/mtn/issues/?scope=all&state=opened) and  
 
  - share your experience  
  - add related links  
@@ -14,11 +14,11 @@ List [opened issues](https://gitlab.com/movie_thumbnailer/mtn/issues/?scope=all&
 
 ## Improve doc
 
-Read the [README](https://gitlab.com/movie_thumbnailer/mtn/-/blob/devel/README.md) and [Wiki](https://gitlab.com/movie_thumbnailer/mtn/wikis/home) and check for errors, typos, etc. If you are not familiar with git and merge requests, you can send your correction via [email](mailto:movie_thumbnailer@gmx.com).
+Read the [README](https://github.com/AhmadNaruto/mtn/-/blob/devel/README.md) and [Wiki](https://github.com/AhmadNaruto/mtn/wikis/home) and check for errors, typos, etc. If you are not familiar with git and merge requests, you can send your correction via [email](mailto:movie_thumbnailer@gmx.com).
 
 ## Report bug
 
-Download latest version and test it. If you find a bug, report an [issue](https://gitlab.com/movie_thumbnailer/mtn/issues). Fill in all important information to reproduce the bug. Use **-v** switch to print out debug information. Attach whole output as a file output.txt.  
+Download latest version and test it. If you find a bug, report an [issue](https://github.com/AhmadNaruto/mtn/issues). Fill in all important information to reproduce the bug. Use **-v** switch to print out debug information. Attach whole output as a file output.txt.  
 
 <u>*Example:*</u>  
 

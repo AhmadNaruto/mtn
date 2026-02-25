@@ -4,9 +4,9 @@ Release:	1%{?dist}
 Summary:	Movie thumbnailer
 
 License:	GPLv2
-URL:		http://gitlab.com/movie_thumbnailer/mtn/
-Source0:	https://gitlab.com/movie_thumbnailer/mtn/-/archive/devel/%{name}-devel.tar.gz
-# Source0:	https://gitlab.com/movie_thumbnailer/mtn/-/archive/v%%{version}/%%{name}-v%%{version}.tar.gz
+URL:		http://github.com/AhmadNaruto/mtn/
+Source0:	https://github.com/AhmadNaruto/mtn/-/archive/devel/%{name}-devel.tar.gz
+# Source0:	https://github.com/AhmadNaruto/mtn/-/archive/v%%{version}/%%{name}-v%%{version}.tar.gz
 
 BuildRequires:	gcc
 BuildRequires:	make

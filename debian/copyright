@@ -1,6 +1,6 @@
 Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Upstream-Name: mtn
-Source: https://gitlab.com/movie_thumbnailer/mtn/
+Source: https://github.com/AhmadNaruto/mtn/
 
 Files: *
 Copyright: 2024 wahibre <wahibre@gmx.com>

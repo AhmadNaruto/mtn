@@ -5,7 +5,7 @@ Movie Thumbnailer (mtn) saves thumbnails (screenshots) of video files to image f
 It uses FFmpeg's libavcodec as its engine, so it supports all popular codecs, e.g. h.265/hevc, h.264, mpeg1, mpeg2, mp4, vc1, wmv, xvid, divx...     
 mtn was originaly developed by tuit (tuitfun); though most of its magic is actually done
 by FFmpeg libraries. For documents, please see in the doc directory and wiki at 
-https://gitlab.com/movie_thumbnailer/mtn/wikis/home .
+https://github.com/AhmadNaruto/mtn/wikis/home .
 
 
 Dependency
@@ -18,7 +18,7 @@ Getting source
 ==============
 
 ```sh
-git clone https://gitlab.com/movie_thumbnailer/mtn.git
+git clone https://github.com/AhmadNaruto/mtn.git
 ```
 
 Installation
@@ -37,7 +37,7 @@ make install
 From community repository
 -----------
 
-See [wiki](https://gitlab.com/movie_thumbnailer/mtn/wikis/home#install-from-community-repository) page
+See [wiki](https://github.com/AhmadNaruto/mtn/wikis/home#install-from-community-repository) page
 
 Getting build dependencies
 ==========================
@@ -102,14 +102,14 @@ pacman -S mingw-w64-x86_64-make mingw-w64-x86_64-gcc mingw-w64-x86_64-ffmpeg min
 mingw32-make.exe
 
 ```
-(more information in [wiki](https://gitlab.com/movie_thumbnailer/mtn/-/wikis/Building-on-Windows))
+(more information in [wiki](https://github.com/AhmadNaruto/mtn/-/wikis/Building-on-Windows))
 
 macOS [(brew)](https://brew.sh/)
 =====
 
 
 If you don't want to contribute please refer to the installation guide
-[here](https://gitlab.com/movie_thumbnailer/mtn/wikis/home#macos)
+[here](https://github.com/AhmadNaruto/mtn/wikis/home#macos)
 instead.
 
 ```sh

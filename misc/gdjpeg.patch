@@ -8,7 +8,7 @@ index f2dd329..f80e7ca 100644
  
 -	sprintf(comment, "CREATOR: gd-jpeg v%s (using IJG JPEG v%d),", GD_JPEG_VERSION, JPEG_LIB_VERSION);
 +	sprintf(comment, "CREATOR: Movie Thumbnailer v3.5.0 "
-+	"(https://gitlab.com/movie_thumbnailer/mtn/wikis) "
++	"(https://github.com/AhmadNaruto/mtn/wikis) "
 +	"using gd-jpeg v%s (using IJG JPEG v%d),", GD_JPEG_VERSION, JPEG_LIB_VERSION);
  
  	if(quality >= 0) {

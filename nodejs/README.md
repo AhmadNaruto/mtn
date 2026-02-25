@@ -333,5 +333,5 @@ GPL-2.0 (same as mtn)
 
 ## Links
 
-- [mtn GitLab](https://gitlab.com/movie_thumbnailer/mtn)
-- [mtn Wiki](https://gitlab.com/movie_thumbnailer/mtn/wikis/home)
+- [mtn GitLab](https://github.com/AhmadNaruto/mtn)
+- [mtn Wiki](https://github.com/AhmadNaruto/mtn/wikis/home)
