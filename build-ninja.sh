@@ -23,6 +23,8 @@ NINJA_FILE="${BUILD_DIR}/build.ninja"
 BUILD_TYPE="release"
 CLEAN_BUILD=false
 STATIC_BUILD=false
+DO_INSTALL=false
+INSTALL_PREFIX="/usr/local"
 
 # Colors for output
 RED='\033[0;31m'
@@ -55,16 +57,25 @@ Build Movie Thumbnailer (mtn) using Ninja
 Usage: $0 [options]
 
 Options:
-  --clean     Clean build directory before building
-  --debug     Build with debug symbols and sanitizers
-  --static    Build static binary (requires static libraries)
-  --help      Show this help message
+  --clean           Clean build directory before building
+  --debug           Build with debug symbols and sanitizers
+  --static          Build static binary (requires static libraries)
+  --install         Install after successful build
+  --prefix <path>   Installation prefix (default: /usr/local)
+  --help            Show this help message
 
 Examples:
-  $0                    # Standard release build
-  $0 --clean            # Clean build
-  $0 --debug            # Debug build with symbols
-  $0 --static           # Static binary build
+  $0                          # Standard release build
+  $0 --clean                  # Clean build
+  $0 --debug                  # Debug build with symbols
+  $0 --static                 # Static binary build
+  $0 --install                # Build and install to /usr/local
+  $0 --install --prefix /usr  # Build and install to /usr
+
+Installation paths:
+  Binary:  <prefix>/bin/mtn
+  Docs:    <prefix>/share/doc/mtn (future)
+  Man:     <prefix>/share/man/man1 (future)
 
 Requirements:
   - Ninja build system
@@ -89,6 +100,14 @@ while [[ $# -gt 0 ]]; do
         --static)
             STATIC_BUILD=true
             shift
+            ;;
+        --install)
+            DO_INSTALL=true
+            shift
+            ;;
+        --prefix)
+            INSTALL_PREFIX="$2"
+            shift 2
             ;;
         --help)
             show_help
@@ -323,7 +342,7 @@ build() {
 verify() {
     if [ -f "$BIN_DIR/mtn" ]; then
         log_info "Verifying build..."
-        
+
         # Check if binary is executable
         if [ -x "$BIN_DIR/mtn" ]; then
             log_success "Binary is executable"
@@ -331,22 +350,93 @@ verify() {
             log_warning "Binary is not executable, fixing permissions..."
             chmod +x "$BIN_DIR/mtn"
         fi
-        
+
         # Get version
         local VERSION=$("$BIN_DIR/mtn" -v 2>&1 | head -1)
         log_info "Version: $VERSION"
-        
+
         # Check dependencies
-        if ldd "$BIN_DIR/mtn" &>/dev/null; then
+        if command -v ldd &>/dev/null; then
             log_info "Linked libraries:"
-            ldd "$BIN_DIR/mtn" | grep -E "(libav|libsw|libgd)" | while read line; do
+            ldd "$BIN_DIR/mtn" 2>/dev/null | grep -E "(libav|libsw|libgd)" | while read line; do
                 echo "  $line"
             done
         fi
-        
+
         log_success "Build verification complete!"
     else
         log_error "Binary not found at $BIN_DIR/mtn"
+        exit 1
+    fi
+}
+
+# Install binary
+install_binary() {
+    if [ ! -f "$BIN_DIR/mtn" ]; then
+        log_error "Binary not found. Please build first."
+        exit 1
+    fi
+
+    log_info "Installing to $INSTALL_PREFIX..."
+
+    # Create directories
+    local BIN_DIR_INSTALL="$INSTALL_PREFIX/bin"
+    local DOC_DIR="$INSTALL_PREFIX/share/doc/mtn"
+    local MAN_DIR="$INSTALL_PREFIX/share/man/man1"
+
+    # Check if we have write permission
+    if [ ! -w "$BIN_DIR_INSTALL" ]; then
+        log_warning "Cannot write to $BIN_DIR_INSTALL, trying with sudo..."
+        SUDO_CMD="sudo"
+    else
+        SUDO_CMD=""
+    fi
+
+    # Install binary
+    log_info "Installing binary to $BIN_DIR_INSTALL..."
+    if $SUDO_CMD mkdir -p "$BIN_DIR_INSTALL" 2>/dev/null; then
+        if $SUDO_CMD cp -f "$BIN_DIR/mtn" "$BIN_DIR_INSTALL/mtn" 2>/dev/null; then
+            $SUDO_CMD chmod 755 "$BIN_DIR_INSTALL/mtn" 2>/dev/null
+            log_success "Binary installed to $BIN_DIR_INSTALL/mtn"
+        else
+            log_error "Failed to install binary"
+            exit 1
+        fi
+    else
+        log_error "Failed to create directory $BIN_DIR_INSTALL"
+        exit 1
+    fi
+
+    # Install documentation (if available)
+    if [ -f "$SCRIPT_DIR/README.md" ]; then
+        log_info "Installing documentation to $DOC_DIR..."
+        $SUDO_CMD mkdir -p "$DOC_DIR" 2>/dev/null
+        $SUDO_CMD cp -f "$SCRIPT_DIR/README.md" "$DOC_DIR/" 2>/dev/null
+        $SUDO_CMD cp -f "$SCRIPT_DIR/LICENSE" "$DOC_DIR/" 2>/dev/null
+        log_success "Documentation installed"
+    fi
+
+    # Install man page (if available)
+    if [ -f "$SCRIPT_DIR/man/mtn.1" ]; then
+        log_info "Installing man page to $MAN_DIR..."
+        $SUDO_CMD mkdir -p "$MAN_DIR" 2>/dev/null
+        $SUDO_CMD cp -f "$SCRIPT_DIR/man/mtn.1" "$MAN_DIR/mtn.1" 2>/dev/null
+        $SUDO_CMD chmod 644 "$MAN_DIR/mtn.1" 2>/dev/null
+        log_success "Man page installed"
+    fi
+
+    # Verify installation
+    if [ -x "$BIN_DIR_INSTALL/mtn" ]; then
+        log_success "Installation complete!"
+        echo ""
+        log_info "You can now run mtn from anywhere:"
+        echo "  mtn -v"
+        echo "  mtn -c 3 -r 2 your_video.mp4"
+        echo ""
+        log_info "Or use full path:"
+        echo "  $BIN_DIR_INSTALL/mtn [options] video.mp4"
+    else
+        log_error "Installation failed!"
         exit 1
     fi
 }
@@ -358,24 +448,36 @@ main() {
     echo "  Using Ninja Build System"
     echo "========================================"
     echo ""
-    
+
     check_requirements
     clean_build
     generate_ninja_file
     build
     verify
-    
-    echo ""
-    echo "========================================"
-    log_success "Build completed successfully!"
-    echo "========================================"
-    echo ""
-    echo "Binary: $BIN_DIR/mtn"
-    echo ""
-    echo "Quick test:"
-    echo "  $BIN_DIR/mtn -v"
-    echo "  $BIN_DIR/mtn -c 3 -r 2 your_video.mp4"
-    echo ""
+
+    # Install if requested
+    if [ "$DO_INSTALL" = true ]; then
+        echo ""
+        install_binary
+    else
+        echo ""
+        echo "========================================"
+        log_success "Build completed successfully!"
+        echo "========================================"
+        echo ""
+        echo "Binary: $BIN_DIR/mtn"
+        echo ""
+        echo "Quick test:"
+        echo "  $BIN_DIR/mtn -v"
+        echo "  $BIN_DIR/mtn -c 3 -r 2 your_video.mp4"
+        echo ""
+        if [ "$BUILD_TYPE" = "release" ]; then
+            log_info "To install system-wide, run:"
+            echo "  $0 --install"
+            echo "  or"
+            echo "  $0 --install --prefix /usr"
+        fi
+    fi
 }
 
 # Run main
